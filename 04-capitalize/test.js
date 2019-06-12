@@ -28,7 +28,7 @@ try {
     const output = capitalize(' ');
     if (typeof output !== 'string') {
         console.log('функция возвращает неверный тип для " " (пробел)');
-    } else if (output.replace(/[ ]+/g, ' ') !== '') {
+    } else if (output !== '' && output !== ' ') {
         console.log('функция возвращает не то значение для " " (пробел)');
     }
 } catch (excep) {
