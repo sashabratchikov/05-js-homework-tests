@@ -38,7 +38,7 @@ try {
     const output = capitalize('слово ');
     if (typeof output !== 'string') {
         console.log('функция возвращает неверный тип для "слово " (с пробелом)');
-    } else if (output.replace(/[ ]+/g, ' ') !== 'Слово') {
+    } else if (output !== 'Слово' && output !== 'Слово ') {
         console.log('функция возвращает не то значение для "слово " (с пробелом)');
     }
 } catch (excep) {
