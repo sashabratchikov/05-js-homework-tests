@@ -20,18 +20,18 @@ try {
     console.log('функция вызывает ошибку для "finder,", "Friend."');
 }
 try {
-    if (anagram('!!!', '...') !== true) {
-        console.log('функция возвращает не то значение для "!!!", "..."');
+    if (anagram('a!!!b', '.a.b.') !== true) {
+        console.log('функция возвращает не то значение для "a!!!b", ".a.b."');
     }
 } catch (excep) {
-    console.log('функция вызывает ошибку для "!!!", "..."');
+    console.log('функция вызывает ошибку для "a!!!b", ".a.b."');
 }
 try {
-    if (anagram('', '') !== true) {
-        console.log('функция возвращает не то значение для пустой строки');
+    if (anagram('aba', 'ba') !== false) {
+        console.log('функция возвращает не то значение для "aba", "ba"');
     }
 } catch (excep) {
-    console.log('функция вызывает ошибку для пустой строки');
+    console.log('функция вызывает ошибку для "aba", "ba"');
 }
 try {
     if (anagram('up', 'down') !== false) {
