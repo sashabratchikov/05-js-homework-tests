@@ -13,20 +13,6 @@ try {
     console.log('функция вызывает ошибку для "hello", "bye"');
 }
 try {
-    if (anagram('finder,', 'Friend.') !== true) {
-        console.log('функция возвращает не то значение для "finder,", "Friend."');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "finder,", "Friend."');
-}
-try {
-    if (anagram('a!!!b', '.a.b.') !== true) {
-        console.log('функция возвращает не то значение для "a!!!b", ".a.b."');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "a!!!b", ".a.b."');
-}
-try {
     if (anagram('aba', 'ba') !== false) {
         console.log('функция возвращает не то значение для "aba", "ba"');
     }
