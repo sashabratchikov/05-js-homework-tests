@@ -35,7 +35,7 @@ function test(val) {
     }
 }
 try {
-    for (let i = -15; i <= 15; i++) {
+    for (let i = 1; i <= 15; i++) {
         test(i);
     }
 } catch (excep) {
