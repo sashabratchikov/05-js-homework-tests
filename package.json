@@ -1,0 +1,24 @@
+{
+  "name": "05-js-homework-tests",
+  "version": "1.0.0",
+  "description": "Как использовать:",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashabratchikov/05-js-homework-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sashabratchikov/05-js-homework-tests/issues"
+  },
+  "homepage": "https://github.com/sashabratchikov/05-js-homework-tests#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "javascript-obfuscator": "^0.18.1"
+  }
+}

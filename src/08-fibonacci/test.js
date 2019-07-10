@@ -1,49 +1,29 @@
-try {
-    if (fibonacci(0) !== 0) {
-        console.log('функция возвращает не то значение для 0');
+const errorStyle = 'color: red;';
+const noErrorStyle = 'color: green;';
+
+function runTest(studentFunc, args, requiredRes, argName = `"${args[0]}"`) {
+    try {
+        if (studentFunc(...args) !== requiredRes) {
+            console.log(`%c функция возвращает не то значение для ${argName}`, errorStyle);
+        } else {
+            console.log(`%c функция работает правильно для ${argName}`, noErrorStyle);
+        }
+    } catch (excep) {
+        console.log(`%c функция вызывает ошибку для ${argName}`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 0');
 }
+
 try {
-    if (fibonacci(1) !== 0) {
-        console.log('функция возвращает не то значение для 1');
+    fibonacci;
+} catch (e) {
+    if (e.name === 'ReferenceError') {
+        console.log(`%c функция ${e.message.split(' ')[0]} не объявлена`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 1');
 }
-try {
-    if (fibonacci(2) !== 1) {
-        console.log('функция возвращает не то значение для 2');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 2');
-}
-try {
-    if (fibonacci(3) !== 1) {
-        console.log('функция возвращает не то значение для 3');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 3');
-}
-try {
-    if (fibonacci(4) !== 2) {
-        console.log('функция возвращает не то значение для 4');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 4');
-}
-try {
-    if (fibonacci(5) !== 3) {
-        console.log('функция возвращает не то значение для 5');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 5');
-}
-try {
-    if (fibonacci(6) !== 5) {
-        console.log('функция возвращает не то значение для 6');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 6');
-}
+
+runTest(fibonacci, [1], 0, 0);
+runTest(fibonacci, [2], 1, 2);
+runTest(fibonacci, [3], 1, 3);
+runTest(fibonacci, [4], 2, 4);
+runTest(fibonacci, [5], 3, 5);
+runTest(fibonacci, [6], 5, 6);

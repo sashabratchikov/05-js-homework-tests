@@ -1,3 +1,6 @@
+const errorStyle = 'color: red;';
+const noErrorStyle = 'color: green;';
+
 function fizzBuzzTest(num) {
     if (typeof num !== 'number' || isNaN(num) || num % 1 !== 0) {
         return;
@@ -26,7 +29,9 @@ function test(val) {
     output = [];
     fizzBuzz(val);
     if (JSON.stringify(TestOutput) !== JSON.stringify(output)) {
-        oldLog('функция выводит в консоль неверное значение для ' + JSON.stringify(val));
+        oldLog('%c функция выводит в консоль неверное значение для ' + JSON.stringify(val), errorStyle);
+    } else {
+        oldLog('%c функция работает правильно для ' + JSON.stringify(val), noErrorStyle);
     }
 }
 try {
@@ -34,6 +39,6 @@ try {
         test(i);
     }
 } catch (excep) {
-    oldLog('функция вызвала ошибку(' + excep + ')');
+    oldLog('%c функция вызвала ошибку(' + excep + ')', errorStyle);
 }
 console.log = oldLog;
