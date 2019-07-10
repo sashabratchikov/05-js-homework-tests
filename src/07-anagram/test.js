@@ -1,35 +1,28 @@
-try {
-    if (anagram('finder', 'Friend') !== true) {
-        console.log('функция возвращает не то значение для "finder", "Friend"');
+const errorStyle = 'color: red;';
+const noErrorStyle = 'color: green;';
+
+function runTest(studentFunc, args, requiredRes, argName = `"${args[0]}"`) {
+    try {
+        if (studentFunc(...args) !== requiredRes) {
+            console.log(`%c функция возвращает не то значение для ${argName}`, errorStyle);
+        } else {
+            console.log(`%c функция работает правильно для ${argName}`, noErrorStyle);
+        }
+    } catch (excep) {
+        console.log(`%c функция вызывает ошибку для ${argName}`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "finder", "Friend"');
 }
+
 try {
-    if (anagram('hello', 'bye') !== false) {
-        console.log('функция возвращает не то значение для "hello", "bye"');
+    anagram;
+} catch (e) {
+    if (e.name === 'ReferenceError') {
+        console.log(`%c функция ${e.message.split(' ')[0]} не объявлена`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "hello", "bye"');
 }
-try {
-    if (anagram('aba', 'ba') !== false) {
-        console.log('функция возвращает не то значение для "aba", "ba"');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "aba", "ba"');
-}
-try {
-    if (anagram('up', 'down') !== false) {
-        console.log('функция возвращает не то значение для "up", "down"');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "up", "down"');
-}
-try {
-    if (anagram('up', 'UP') !== true) {
-        console.log('функция возвращает не то значение для "up", "UP"');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "up", "UP"');
-}
+
+runTest(anagram, ['finder', 'Friend'], true, '"finder", "Friend"');
+runTest(anagram, ['hello', 'bye'], false, '"hello", "bye"');
+runTest(anagram, ['aba', 'ba'], false, '"aba", "ba"');
+runTest(anagram, ['up', 'down'], false, '"up", "down"');
+runTest(anagram, ['up', 'UP'], false, '"up", "UP"');

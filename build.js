@@ -29,7 +29,7 @@ const makeIndexHTML = (folder) => {
 }
 
 fs.readdir(workFolder, (err, folders) => {
-    folders.forEach(folder => {
+    folders.filter(folder => !folder.startsWith('.')).forEach(folder => {
         if (!err) {
             makeIndexHTML(folder);
         } else {
