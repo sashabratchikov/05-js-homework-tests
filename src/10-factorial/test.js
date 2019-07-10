@@ -1,42 +1,29 @@
-try {
-    if (factorial(0) !== 1) {
-        console.log('функция возвращает не то значение для 0');
+const errorStyle = 'color: red;';
+const noErrorStyle = 'color: green;';
+
+function runTest(studentFunc, args, requiredRes, argName = `"${args[0]}"`) {
+    try {
+        if (studentFunc(...args) !== requiredRes) {
+            console.log(`%c функция возвращает не то значение для ${argName}`, errorStyle);
+        } else {
+            console.log(`%c функция работает правильно для ${argName}`, noErrorStyle);
+        }
+    } catch (excep) {
+        console.log(`%c функция вызывает ошибку для ${argName}`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 0');
 }
+
 try {
-    if (factorial(1) !== 1) {
-        console.log('функция возвращает не то значение для 1');
+    factorial;
+} catch (e) {
+    if (e.name === 'ReferenceError') {
+        console.log(`%c функция ${e.message.split(' ')[0]} не объявлена`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 1');
 }
-try {
-    if (factorial(2) !== 2) {
-        console.log('функция возвращает не то значение для 2');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 2');
-}
-try {
-    if (factorial(3) !== 6) {
-        console.log('функция возвращает не то значение для 3');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 3');
-}
-try {
-    if (factorial(6) !== 720) {
-        console.log('функция возвращает не то значение для 6');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 6');
-}
-try {
-    if (factorial(9) !== 362880) {
-        console.log('функция возвращает не то значение для 9');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 9');
-}
+
+runTest(factorial, [0], 1, 0);
+runTest(factorial, [1], 1, 1);
+runTest(factorial, [2], 2, 2);
+runTest(factorial, [3], 6, 3);
+runTest(factorial, [6], 720, 6);
+runTest(factorial, [9], 362880, 9);

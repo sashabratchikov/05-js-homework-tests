@@ -1,56 +1,31 @@
-try {
-    if (isPrime(0) !== false) {
-        console.log('функция возвращает не то значение для 0');
+const errorStyle = 'color: red;';
+const noErrorStyle = 'color: green;';
+
+function runTest(studentFunc, args, requiredRes, argName = `"${args[0]}"`) {
+    try {
+        if (studentFunc(...args) !== requiredRes) {
+            console.log(`%c функция возвращает не то значение для ${argName}`, errorStyle);
+        } else {
+            console.log(`%c функция работает правильно для ${argName}`, noErrorStyle);
+        }
+    } catch (excep) {
+        console.log(`%c функция вызывает ошибку для ${argName}`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 0');
 }
+
 try {
-    if (isPrime(1) !== false) {
-        console.log('функция возвращает не то значение для 1');
+    isPrime;
+} catch (e) {
+    if (e.name === 'ReferenceError') {
+        console.log(`%c функция ${e.message.split(' ')[0]} не объявлена`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 1');
 }
-try {
-    if (isPrime(2) !== true) {
-        console.log('функция возвращает не то значение для 2');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 2');
-}
-try {
-    if (isPrime(3) !== true) {
-        console.log('функция возвращает не то значение для 3');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 3');
-}
-try {
-    if (isPrime(6) !== false) {
-        console.log('функция возвращает не то значение для 6');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 6');
-}
-try {
-    if (isPrime(17) !== true) {
-        console.log('функция возвращает не то значение для 17');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 17');
-}
-try {
-    if (isPrime(997) !== true) {
-        console.log('функция возвращает не то значение для 997');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 997');
-}
-try {
-    if (isPrime(998) !== false) {
-        console.log('функция возвращает не то значение для 998');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для 998');
-}
+
+runTest(isPrime, [0], false, 0);
+runTest(isPrime, [1], false, 1);
+runTest(isPrime, [2], true, 2);
+runTest(isPrime, [3], true, 3);
+runTest(isPrime, [6], false, 6);
+runTest(isPrime, [17], true, 17);
+runTest(isPrime, [997], true, 997);
+runTest(isPrime, [998], false, 998);

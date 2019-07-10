@@ -1,49 +1,30 @@
-try {
-    if (findVowels('здравствуй') !== 2) {
-        console.log('функция возвращает не то значение для "здравствуй"');
+const errorStyle = 'color: red;';
+const noErrorStyle = 'color: green;';
+
+function runTest(studentFunc, args, requiredRes, argName = `"${args[0]}"`) {
+    try {
+        if (studentFunc(...args) !== requiredRes) {
+            console.log(`%c функция возвращает не то значение для ${argName}`, errorStyle);
+        } else {
+            console.log(`%c функция работает правильно для ${argName}`, noErrorStyle);
+        }
+    } catch (excep) {
+        console.log(`%c функция вызывает ошибку для ${argName}`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "здравствуй"');
 }
+
 try {
-    if (findVowels('здрАвстВуй') !== 2) {
-        console.log('функция возвращает не то значение для "здрАвстВуй"');
+    findVowels;
+} catch (e) {
+    if (e.name === 'ReferenceError') {
+        console.log(`%c функция ${e.message.split(' ')[0]} не объявлена`, errorStyle);
     }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "здрАвстВуй"');
 }
-try {
-    if (findVowels('привет') !== 2) {
-        console.log('функция возвращает не то значение для "привет"');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "привет"');
-}
-try {
-    if (findVowels('хеллоу') !== 3) {
-        console.log('функция возвращает не то значение для "хеллоу"');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "хеллоу"');
-}
-try {
-    if (findVowels('123') !== 0) {
-        console.log('функция возвращает не то значение для "123"');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для "123"');
-}
-try {
-    if (findVowels(' ') !== 0) {
-        console.log('функция возвращает не то значение для " " (пробел)');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для " " (пробел)');
-}
-try {
-    if (findVowels('') !== 0) {
-        console.log('функция возвращает не то значение для пустой сроки');
-    }
-} catch (excep) {
-    console.log('функция вызывает ошибку для пустой сроки');
-}
+
+runTest(findVowels, ['здравствуй'], 2);
+runTest(findVowels, ['здрАвстВуй'], 2);
+runTest(findVowels, ['привет'], 2);
+runTest(findVowels, ['хеллоу'], 3);
+runTest(findVowels, ['123'], 0);
+runTest(findVowels, [' '], 0, '" " (пробел)');
+runTest(findVowels, [''], 0, '"" (пустая строка)');
